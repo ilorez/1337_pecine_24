@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 21:39:04 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/06/30 08:59:22 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/01 21:23:19 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 char	*ft_strcpy(char *dest, char *src)
@@ -20,5 +20,5 @@ char	*ft_strcpy(char *dest, char *src)
 		i++;
 	}
 	dest[i] = '\0';
-	return (src);
+	return (dest);
 }

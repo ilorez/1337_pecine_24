@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:20:26 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/01 21:10:47 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/01 22:17:05 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,32 +32,22 @@ void	ft_dec_to_hexa(int n, char *dest)
 	int	teamp;
 
 	i = 0;
+	if (n == 0)
+	{
+		dest[i] = '0';
+		dest[i + 1] = '0';
+	}
 	while (n != 0)
 	{
 		if (i == 0 && n < 16)
 			dest[i++] = 48;
 		teamp = n % 16;
 		if (teamp < 10)
-			dest[i] = teamp + 48;
+			dest[i] = teamp + '0';
 		else
-			dest[i] = teamp + 55;
+			dest[i] = teamp + 'a' - 10;
 		i++;
 		n = n / 16;
-	}
-}
-
-void	ft_strlowcase(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] >= 65 && str[i] <= 90)
-		{
-			str[i] += 32;
-		}
-		i++;
 	}
 }
 
@@ -69,15 +59,14 @@ void	ft_putstr_non_printable(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] < 127 && str[i] > 31)
+		if (str[i] < 127 && str[i] >= ' ')
 		{
 			ft_putchar(str[i]);
 		}
-		else if (str[i] == 127 || (str[i] >= 0 && str[i] <= 31))
+		else
 		{
 			ft_putchar('\\');
 			ft_dec_to_hexa(str[i], hex);
-			ft_strlowcase(hex);
 			ft_putstr(hex);
 		}
 		i++;

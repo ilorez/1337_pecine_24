@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 14:14:39 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/06/30 14:18:22 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/01 21:27:10 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_str_is_uppercase(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] < 56 || str[i] > 90)
+		if (str[i] < 'A' || str[i] > 'Z')
 		{
 			return (0);
 		}
