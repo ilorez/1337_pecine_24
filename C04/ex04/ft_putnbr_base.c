@@ -40,9 +40,9 @@ int	is_valid_base(char *base)
 	{
 		j = i + 1;
 		if (base[i] == '+' || base[i] == '-')
-		{
 			return (0);
-		}
+		else if ((base[i] >= 9 && base[i] <= 13) || base[i] == 32)
+			return (0);
 		while (base[j])
 		{
 			if (base[j] == base[i])
@@ -74,7 +74,15 @@ void	ft_putnbr_base(int nbr, char *base)
 	bl = ft_strlen(base);
 	if (bl <= 1 || !is_valid_base(base))
 		return ;
-	if (nbr < 0)
+	if (nbr == -2147483648)
+	{
+		ft_putchar('-');
+		nbr = 2147483648 / bl;
+		_ft_putnbr_base(nbr, base, bl);
+		ft_putchar(base[2147483648 % bl]);
+		return ;
+	}
+	else if (nbr < 0)
 	{
 		nbr = -nbr;
 		ft_putchar('-');

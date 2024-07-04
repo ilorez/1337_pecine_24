@@ -17,9 +17,16 @@ int	is_number(char c)
 	return (0);
 }
 
+int	ft_is_space(char c)
+{
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (1);
+	return (0);
+}
+
 int	ft_is_num_space_p_m(char c)
 {
-	if (c == ' ' || is_number(c) || c == '+' || c == '-')
+	if (ft_is_space(c) || is_number(c) || c == '+' || c == '-')
 		return (1);
 	return (0);
 }
@@ -38,10 +45,8 @@ int	ft_atoi(char *str)
 		if (is_number(str[i]))
 		{
 			my_n = my_n * 10 + (str[i] - 48);
-		}
-		else if (my_n > 0)
-		{
-			return (my_n * signe);
+			if (str[i + 1] && (str[i + 1] < '0' || str[i + 1] > '9'))
+				return (my_n * signe);
 		}
 		if (str[i] == '-')
 			signe *= -1;
