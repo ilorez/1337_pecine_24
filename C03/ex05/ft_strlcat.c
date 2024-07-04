@@ -24,7 +24,6 @@ int	ft_strlen(char *str)
 
 void	ft_strncat(char *dest, char *src, unsigned int nb, unsigned int dl)
 {
-	unsigned int	i;
 	unsigned int	j;
 
 	j = 0;

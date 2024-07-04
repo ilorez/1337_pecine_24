@@ -15,10 +15,8 @@ char	*ft_strstr(char *str, char *to_find)
 	int		i;
 	int		j;
 	int		pos;
-	char	*null_pointer;
 
 	i = 0;
-	null_pointer = 0;
 	if (!*to_find)
 		return (str);
 	while (str[i])
@@ -36,5 +34,5 @@ char	*ft_strstr(char *str, char *to_find)
 		}
 		i++;
 	}
-	return (null_pointer);
+	return (0);
 }
