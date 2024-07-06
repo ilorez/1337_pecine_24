@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:00:07 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/06 15:31:06 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/06 16:26:20 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	dest_p_src_len = dest_len + ft_strlen(src);
 	if (size == 0 || size <= dest_len)
 		return (dest_p_src_len);
-	ft_strncat(dest, src, (size - dest_len), dest_len);
+	ft_strncat(dest, src, (size - dest_len - 1), dest_len);
 	return (dest_p_src_len);
 }
