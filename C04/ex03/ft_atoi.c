@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 11:51:34 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/03 13:40:06 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/06 09:14:34 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_number(char c)
 
 int	ft_is_space(char c)
 {
-	if ((c >= 9 && c <= 13) || c == 32)
+	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r' || c == 32)
 		return (1);
 	return (0);
 }

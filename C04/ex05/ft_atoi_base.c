@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:35:41 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/03 18:17:32 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/06 09:44:24 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,14 @@ int	ft_strlen(char *str)
 	}
 	return (i);
 }
-
+int	ft_is_space(char	c)
+{
+	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r' || c == 32)
+	{
+		return (1);
+	}
+	return (0);
+}
 int	is_valid_base(char *base)
 {
 	int	i;
@@ -32,7 +39,7 @@ int	is_valid_base(char *base)
 	while (base[i])
 	{
 		j = i + 1;
-		if (base[i] == '+' || base[i] == '-' || base[i] == ' ')
+		if (base[i] == '+' || base[i] == '-' || ft_is_space(bas[i]))
 		{
 			return (0);
 		}
@@ -56,7 +63,7 @@ int	is_number(char c)
 
 int	ft_is_num_space_p_m(char c)
 {
-	if (c == ' ' || is_number(c) || c == '+' || c == '-')
+	if (ft_is_space(c) || is_number(c) || c == '+' || c == '-')
 		return (1);
 	return (0);
 }
@@ -86,7 +93,7 @@ int	ft_atoi(char *str)
 	}
 	return (my_n * signe);
 }
-char	*ft_convert_base_string()
+void	ft_convert_base_string(char *str, base, bl)
 {
 	
 }
@@ -97,6 +104,6 @@ int	ft_atoi_base(char *str, char *base)
 
 	bl = ft_strlen(base);
 	if (bl <= 1 || !is_valid_base(base))
-		return ;
-	ft_convert_base_string(str,base,bl);	
+		return (0);
+	ft_convert_base_string(str, base, bl);	
 }
