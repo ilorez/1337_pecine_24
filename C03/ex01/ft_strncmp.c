@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 12:19:13 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/06 10:31:56 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/06 10:32:47 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 
 	if (n <= 0)
 		return (0);
-	while (s2[i] && s2[i] == s1[i] && i < n)
+	while (s2[i] && s2[i] == s1[i] && i < n - 1)
 		i++;
 	return (s1[i] - s2[i]);
 }
