@@ -6,11 +6,11 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:00:07 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/06 08:40:33 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/06 11:11:33 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+unsigned int	ft_strlen(char *str)
 {
 	int	i;
 
@@ -38,8 +38,8 @@ void	ft_strncat(char *dest, char *src, unsigned int nb, unsigned int dl)
 
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	int	dest_p_src_len;
-	int	dest_len;
+	unsigned int	dest_p_src_len;
+	unsigned int	dest_len;
 
 	dest_len = ft_strlen(dest);
 	dest_p_src_len = dest_len + ft_strlen(src);
