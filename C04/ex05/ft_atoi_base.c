@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:35:41 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/07 09:58:33 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/07 10:37:28 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_get_index_of(char *str, char c)
 			return (i);
 		i++;
 	}
-	return (0);
+	return (-1);
 }
 
 int	ft_power(int nb, int power)
@@ -76,28 +76,29 @@ int	ft_power(int nb, int power)
 
 int	ft_atoi_base(char *str, char *base)
 {
-	int	bl;
-	int	sl;
-	int	i;
-	int	n;
-	int	signe;
+	int	data[5];
 
-	signe = 1;
+	data[4] = 1;
 	while (ft_is_space_get_len(*str, "a ", 1))
 		str++;
 	while (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
-			signe *= -1;
+			data[4] *= -1;
 		str++;
 	}
-	bl = ft_is_space_get_len(' ', base, 0);
-	sl = ft_is_space_get_len(' ', str, 0);
-	if (bl <= 1 || !is_valid_base(base))
+	data[0] = ft_is_space_get_len(' ', base, 0);
+	data[1] = ft_is_space_get_len(' ', str, 0);
+	if (data[0] <= 1 || !is_valid_base(base))
 		return (0);
-	n = 0;
-	i = -1;
-	while (str[++i])
-		n += ft_get_index_of(base, str[i]) * ft_power(bl, sl - 1 - i);
-	return (n * signe);
+	data[3] = 0;
+	data[2] = -1;
+	while (str[++data[2]])
+	{
+		index = gt_get_index_of(base, str[data[2]]);
+		if (index == -1)
+			break ;
+		data[3] += index * ft_power(data[0], data[1] - 1 - data[2]);
+	}
+	return (data[3] * data[4]);
 }
