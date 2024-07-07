@@ -6,27 +6,28 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:35:41 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/07 09:12:37 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/07 09:52:10 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+int	ft_is_space_get_len(char c, int choix)
 {
 	int	i;
 
+	if (choix)
+	{
+		if (c == '\t' || c == '\n' || c == '\v')
+			return (1);
+		else if (c == '\f' || c == '\r' || c == 32)
+			return (1);
+		return (0);
+	}
 	i = 0;
 	while (str[i] != '\0')
 		i++;
 	return (i);
 }
-int	ft_is_space(char c)
-{
-	if (c == '\t' || c == '\n' || c == '\v')
-		return (1);
-	else if (c == '\f' || c == '\r' || c == 32)
-		return (1);
-	return (0);
-}
+
 int	is_valid_base(char *base)
 {
 	int	i;
@@ -37,7 +38,7 @@ int	is_valid_base(char *base)
 	while (base[i])
 	{
 		j = i + 1;
-		if (base[i] == '+' || base[i] == '-' || ft_is_space(base[i]))
+		if (base[i] == '+' || base[i] == '-' || ft_is_space_get_len(base[i], 1))
 			return (0);
 		while (base[j])
 		{
@@ -80,7 +81,7 @@ int	ft_atoi_base(char *str, char *base)
 	int	signe;
 
 	signe = 1;
-	while (ft_is_space(*str))
+	while (ft_is_space_get_len(*str, 1))
 		str++;
 	while (*str == '+' || *str == '-')
 	{
@@ -88,8 +89,8 @@ int	ft_atoi_base(char *str, char *base)
 			signe *= -1;
 		str++;
 	}
-	bl = ft_strlen(base);
-	sl = ft_strlen(str);
+	bl = ft_is_space_get_len(base, 0);
+	sl = ft_is_space_get_len(str, 0);
 	if (bl <= 1 || !is_valid_base(base))
 		return (0);
 	n = 0;
