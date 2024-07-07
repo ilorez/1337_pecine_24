@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:35:41 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/06 09:44:24 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/07 09:12:37 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,15 @@ int	ft_strlen(char *str)
 
 	i = 0;
 	while (str[i] != '\0')
-	{
 		i++;
-	}
 	return (i);
 }
-int	ft_is_space(char	c)
+int	ft_is_space(char c)
 {
-	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r' || c == 32)
-	{
+	if (c == '\t' || c == '\n' || c == '\v')
 		return (1);
-	}
+	else if (c == '\f' || c == '\r' || c == 32)
+		return (1);
 	return (0);
 }
 int	is_valid_base(char *base)
@@ -39,10 +37,8 @@ int	is_valid_base(char *base)
 	while (base[i])
 	{
 		j = i + 1;
-		if (base[i] == '+' || base[i] == '-' || ft_is_space(bas[i]))
-		{
+		if (base[i] == '+' || base[i] == '-' || ft_is_space(base[i]))
 			return (0);
-		}
 		while (base[j])
 		{
 			if (base[j] == base[i])
@@ -54,56 +50,51 @@ int	is_valid_base(char *base)
 	return (1);
 }
 
-int	is_number(char c)
-{
-	if (c <= '9' && c >= '0')
-		return (1);
-	return (0);
-}
-
-int	ft_is_num_space_p_m(char c)
-{
-	if (ft_is_space(c) || is_number(c) || c == '+' || c == '-')
-		return (1);
-	return (0);
-}
-
-int	ft_atoi(char *str)
+int	ft_get_index_of(char *str, char c)
 {
 	int	i;
-	int	signe;
-	int	my_n;
 
-	my_n = 0;
 	i = 0;
-	signe = 1;
-	while (str[i] && ft_is_num_space_p_m(str[i]))
+	while (str[i])
 	{
-		if (is_number(str[i]))
-		{
-			my_n = my_n * 10 + (str[i] - 48);
-		}
-		else if (my_n > 0)
-		{
-			return (my_n * signe);
-		}
-		if (str[i] == '-')
-			signe *= -1;
+		if (str[i] == c)
+			return (i);
 		i++;
 	}
-	return (my_n * signe);
+	return (0);
 }
-void	ft_convert_base_string(char *str, base, bl)
+
+int	ft_power(int nb, int power)
 {
-	
+	if (power == 0)
+		return (1);
+	return (nb * ft_power(nb, power - 1));
 }
 
 int	ft_atoi_base(char *str, char *base)
 {
 	int	bl;
+	int	sl;
+	int	i;
+	int	n;
+	int	signe;
 
+	signe = 1;
+	while (ft_is_space(*str))
+		str++;
+	while (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			signe *= -1;
+		str++;
+	}
 	bl = ft_strlen(base);
+	sl = ft_strlen(str);
 	if (bl <= 1 || !is_valid_base(base))
 		return (0);
-	ft_convert_base_string(str, base, bl);	
+	n = 0;
+	i = 0;
+	while (str[i])
+		n += ft_get_index_of(base, str[i]) * ft_power(bl, sl - 1 - i++);
+	return (n * signe);
 }
