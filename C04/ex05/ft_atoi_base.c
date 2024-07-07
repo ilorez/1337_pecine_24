@@ -6,29 +6,11 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:35:41 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/07 10:37:28 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/07 14:08:55 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_space_get_len(char c, char *str, int choix)
-{
-	int	i;
-
-	if (choix)
-	{
-		if (c == '\t' || c == '\n' || c == '\v')
-			return (1);
-		else if (c == '\f' || c == '\r' || c == 32)
-			return (1);
-		return (0);
-	}
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-int	is_valid_base(char *base)
+int	ft_is_valid_base(char *base)
 {
 	int	i;
 	int	j;
@@ -40,7 +22,7 @@ int	is_valid_base(char *base)
 		j = i + 1;
 		if (base[i] == '+' || base[i] == '-')
 			return (0);
-		if (ft_is_space_get_len(base[i], "a ", 1))
+		if ((base[i] >= 9 && base[i] <= 13) || base[i] == 32)
 			return (0);
 		while (base[j])
 		{
@@ -50,17 +32,19 @@ int	is_valid_base(char *base)
 		}
 		i++;
 	}
+	if (i <= 1)
+		return (0);
 	return (1);
 }
 
-int	ft_get_index_of(char *str, char c)
+int	ft_get_index_of(char *base, char c)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (base[i])
 	{
-		if (str[i] == c)
+		if (base[i] == c)
 			return (i);
 		i++;
 	}
@@ -74,31 +58,46 @@ int	ft_power(int nb, int power)
 	return (nb * ft_power(nb, power - 1));
 }
 
+int	ft_get_my_str(char **str, char **base, int *signe)
+{
+	int	i;
+
+	i = 0;
+	while (**str && ((**str >= 9 && **str <= 13) || **str == 32))
+		(*str)++;
+	while (**str == '+' || **str == '-')
+	{
+		if (**str == '-')
+			*signe *= -1;
+		(*str)++;
+	}
+	while ((*str)[i])
+	{
+		if (ft_get_index_of(*base, (*str)[i]) == -1)
+			break ;
+		i++;
+	}
+	return (i);
+}
+
 int	ft_atoi_base(char *str, char *base)
 {
-	int	data[5];
+	int	signe;
+	int	len;
+	int	n;
+	int	i;
+	int	bl;
 
-	data[4] = 1;
-	while (ft_is_space_get_len(*str, "a ", 1))
-		str++;
-	while (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			data[4] *= -1;
-		str++;
-	}
-	data[0] = ft_is_space_get_len(' ', base, 0);
-	data[1] = ft_is_space_get_len(' ', str, 0);
-	if (data[0] <= 1 || !is_valid_base(base))
+	if (!ft_is_valid_base(base))
 		return (0);
-	data[3] = 0;
-	data[2] = -1;
-	while (str[++data[2]])
-	{
-		index = gt_get_index_of(base, str[data[2]]);
-		if (index == -1)
-			break ;
-		data[3] += index * ft_power(data[0], data[1] - 1 - data[2]);
-	}
-	return (data[3] * data[4]);
+	signe = 1;
+	len = ft_get_my_str(&str, &base, &signe);
+	n = 0;
+	i = -1;
+	bl = 0;
+	while (base[bl])
+		bl++;
+	while (++i < len)
+		n += ft_get_index_of(base, str[i]) * ft_power(bl, len - 1 - i);
+	return (n * signe);
 }
