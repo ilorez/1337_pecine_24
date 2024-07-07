@@ -6,11 +6,11 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:35:41 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/07 09:52:10 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/07 09:57:14 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_space_get_len(char c, int choix)
+int	ft_is_space_get_len(char c, char *str, int choix)
 {
 	int	i;
 
@@ -38,7 +38,9 @@ int	is_valid_base(char *base)
 	while (base[i])
 	{
 		j = i + 1;
-		if (base[i] == '+' || base[i] == '-' || ft_is_space_get_len(base[i], 1))
+		if (base[i] == '+' || base[i] == '-')
+			return (0);
+		if (ft_is_space_get_len(base[i], "a ", 1))
 			return (0);
 		while (base[j])
 		{
@@ -81,7 +83,7 @@ int	ft_atoi_base(char *str, char *base)
 	int	signe;
 
 	signe = 1;
-	while (ft_is_space_get_len(*str, 1))
+	while (ft_is_space_get_len(*str, "a ", 1))
 		str++;
 	while (*str == '+' || *str == '-')
 	{
@@ -89,8 +91,8 @@ int	ft_atoi_base(char *str, char *base)
 			signe *= -1;
 		str++;
 	}
-	bl = ft_is_space_get_len(base, 0);
-	sl = ft_is_space_get_len(str, 0);
+	bl = ft_is_space_get_len(' ', base, 0);
+	sl = ft_is_space_get_len(' ', str, 0);
 	if (bl <= 1 || !is_valid_base(base))
 		return (0);
 	n = 0;
