@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:35:41 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/07 09:57:14 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/07 09:58:33 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ int	ft_atoi_base(char *str, char *base)
 	if (bl <= 1 || !is_valid_base(base))
 		return (0);
 	n = 0;
-	i = 0;
-	while (str[i])
-		n += ft_get_index_of(base, str[i]) * ft_power(bl, sl - 1 - i++);
+	i = -1;
+	while (str[++i])
+		n += ft_get_index_of(base, str[i]) * ft_power(bl, sl - 1 - i);
 	return (n * signe);
 }
