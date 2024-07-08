@@ -19,7 +19,8 @@ int	_ft_fibonacci(int bln, int ln, int index)
 	swap = bln;
 	bln = ln;
 	ln = swap + bln;
-	_ft_fibonacci(bln, ln, --index);
+	index--;
+	return (_ft_fibonacci(bln, ln, index));
 }
 
 int	ft_fibonacci(int index)

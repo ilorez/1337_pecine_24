@@ -10,26 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-float	ft_abs(float n)
+double	ft_abs(double n)
 {
 	if (n < 0)
 		return (n * -1);
 	return (n);
 }
 
-int	_ft_sqrt(int nb, int x, float precision)
+int	_ft_sqrt(int nb, double x, double precision)
 {
 	x = (x + (nb / x)) / 2;
-	if (ft_abs(nb - x * x) <= precision)
+	if (ft_abs(nb - (x * x)) <= precision)
 	{
-		return ((int)x);
+		return (x);
 	}
-	_ft_sqrt(nb, x, precision);
+	return (_ft_sqrt(nb, x, precision));
 }
 
 int	ft_sqrt(int nb)
 {
-	float	precision;
+	double	precision;
 
 	if (nb <= 0)
 	{
