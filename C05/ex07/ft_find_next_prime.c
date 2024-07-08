@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 20:15:47 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/07 20:24:59 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/08 07:42:17 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 int	_ft_is_prime(int nb, int i)
@@ -15,7 +15,7 @@ int	_ft_is_prime(int nb, int i)
 		return (1);
 	if (nb % i == 0)
 		return (0);
-	_ft_is_prime(nb, i + 1);
+	retirn (_ft_is_prime(nb, i + 1));
 }
 
 int	ft_is_prime(int nb)
@@ -29,5 +29,5 @@ int	ft_find_next_prime(int nb)
 		return (2);
 	if (ft_is_prime(nb))
 		return (nb);
-	ft_find_next_prime(++nb);
+	return (ft_find_next_prime(++nb));
 }
