@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:20:31 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/08 11:15:22 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/08 11:40:02 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,62 +41,43 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-void	ft_print_strs(char *strs[], int *sorted_indexs, int len)
+void	ft_print_strs(char *strs[], int len)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	while (i < len)
+	while (i < len - 1)
 	{
-		j = 0;
-		while (j < len)
-		{
-			if (sorted_indexs[j] == i)
-			{
-				ft_putstr(strs[j + 1]);
-				ft_putchar('\n');
-			}
-			j++;
-		}
+		ft_putstr(strs[i + 1]);
+		ft_putchar('\n');
 		i++;
 	}
 }
 
-int	main(const int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	int	i;
-	int	j;
-	int	sorted_indexs[argc - 1];
-	int	pos;
+	int		i;
+	int		j;
+	char	*swap;
 
-	i = 0;
-	while (++i < argc)
+	if (argc > 1)
 	{
-		j = 0;
-		pos = 0;
-		while (++j < argc)
+		i = 0;
+		while (++i < argc - 1)
 		{
-			if (ft_strcmp(argv[i], argv[j]) > 0)
-				pos++;
+			j = 1;
+			while (j < argc - 1)
+			{
+				if (ft_strcmp(argv[j], argv[j + 1]) > 0)
+				{
+					swap = argv[j];
+					argv[j] = argv[j + 1];
+					argv[j + 1] = swap;
+				}
+				j++;
+			}
 		}
-		sorted_indexs[i - 1] = pos;
+		ft_print_strs(argv, argc);
 	}
-	ft_print_strs(argv, sorted_indexs, argc - 1);
 	return (0);
 }
-// test 1
-/*
-				ft_putchar(48+j);
-				ft_putchar(':');
-				ft_putchar(48+j+1);
-*/
-// test 2
-/*
-		ft_putchar(i+48);
-		ft_putchar(':');
-		ft_putchar(pos + 48);
-		ft_putchar('\n');
-*/
-
-// write(1, "----------\n", 11);
