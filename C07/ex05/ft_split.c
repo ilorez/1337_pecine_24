@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 12:01:40 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/10 18:21:10 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/10 21:15:56 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,16 @@ char    **ft_split(char    *str, char *charset)
     int w;
 
     w = (ft_count_words(str, charset));
+	printf("words in str is: %d\n", w);
     strings = malloc(sizeof(char *) * w);
     i = 0;
     start = str;
-    while (*str)
+    while (i < w)
     {
-        if (*(str + 1) && str == start && ft_is_sep(*str, charset))
-            start++;
-        if ((str != start && ft_is_sep(*str, charset)))
+        if (str == start && ft_is_sep(*str, charset))
+         	start++;
+		else if ((str != start && (ft_is_sep(*str, charset) || !(*str))))
         {
-            //if (!ft_is_sep(*(str-1), charset))
-            //{
             word = malloc(sizeof(char) * (str - start + 1));
             strings[i] = word;
             while (start != str)
@@ -76,17 +75,17 @@ char    **ft_split(char    *str, char *charset)
     return (strings);
 }
 
-int    main()
+int    main(int argc, char **argv)
 {
     char **strs;
     int    i;
 
-    strs = ft_split(" o w ", " ");
-    printf("woow");
+    strs = ft_split(argv[argc*0 +1], argv[2]);
     i = 0;
-    while (i < 2)
+    while (i < 6)
     {
-        printf("string %d: %s\n",i ,strs[i++]);
+        printf("string %d: [%s]\n",i ,strs[i]);
+		i++;
     }
     return (0);
 }
