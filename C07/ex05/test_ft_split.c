@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   test_ft_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 12:01:40 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/10 22:06:37 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/10 22:49:05 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 int	ft_is_sep(char c, char *seps)
@@ -43,12 +43,6 @@ int	ft_count_words(char *str, char *seps)
 	return (w);
 }
 
-void	ft_just_ff_twf_line(char **w, char **start)
-{
-	(**w) = 0;
-	(*start)++;
-}
-
 char	**ft_split(char *str, char *charset)
 {
 	char	**strings;
@@ -58,6 +52,7 @@ char	**ft_split(char *str, char *charset)
 	int		w;
 
 	w = (ft_count_words(str, charset));
+	printf("words in str is: %d\n", w);
 	strings = malloc(sizeof(char *) * w);
 	i = 0;
 	start = str;
@@ -68,27 +63,30 @@ char	**ft_split(char *str, char *charset)
 		else if ((str != start && (ft_is_sep(*str, charset) || !(*str))))
 		{
 			word = malloc(sizeof(char) * (str - start + 1));
-			strings[i++] = word;
+			strings[i] = word;
 			while (start != str)
 				*word++ = *start++;
-			ft_just_ff_twf_line(&word, &start);
+					// go from start of word to the position we are in now that count as a word
+			*word = 0;              // null terminate the word
+			i++;                    // go to next word
+			start++;
 		}
-		str++;
+		str++; // go next letter
 	}
 	return (strings);
 }
 
-/*int    main(int argc, char **argv)
+int    main(int argc, char **argv)
 {
 	char **strs;
 	int    i;
 
 	strs = ft_split(argv[argc*0 +1], argv[2]);
 	i = 0;
-	while (i < 6)
+	while (i < 1)
 	{
 		printf("string %d: [%s]\n",i ,strs[i]);
 		i++;
 	}
 	return (0);
-}*/
+}
