@@ -6,13 +6,13 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 18:35:08 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/10 08:12:55 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/11 09:22:39 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	_ft_is_prime(int nb, int i)
 {
-	if (i * i > nb)
+	if (i > (nb / i))
 		return (1);
 	if (nb % i == 0)
 		return (0);
