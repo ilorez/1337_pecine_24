@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 12:01:40 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/10 22:06:37 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/12 13:04:49 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	**ft_split(char *str, char *charset)
 	int		w;
 
 	w = (ft_count_words(str, charset));
-	strings = malloc(sizeof(char *) * w);
+	strings = malloc(sizeof(char *) * (w + 1));
 	i = 0;
 	start = str;
 	while (i < w)
@@ -75,6 +75,7 @@ char	**ft_split(char *str, char *charset)
 		}
 		str++;
 	}
+	strings[i] = NULL;
 	return (strings);
 }
 
@@ -85,7 +86,7 @@ char	**ft_split(char *str, char *charset)
 
 	strs = ft_split(argv[argc*0 +1], argv[2]);
 	i = 0;
-	while (i < 6)
+	while (strs[i])
 	{
 		printf("string %d: [%s]\n",i ,strs[i]);
 		i++;
