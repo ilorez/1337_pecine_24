@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 12:01:40 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/12 13:04:49 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/13 10:34:18 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ void	ft_just_ff_twf_line(char **w, char **start)
 	(*start)++;
 }
 
+void	ft_just_again(char **start, char **str, char **word)
+{
+	while (*start != *str)
+		*(*word)++ = *(*start)++;
+}
+
 char	**ft_split(char *str, char *charset)
 {
 	char	**strings;
@@ -69,8 +75,7 @@ char	**ft_split(char *str, char *charset)
 		{
 			word = malloc(sizeof(char) * (str - start + 1));
 			strings[i++] = word;
-			while (start != str)
-				*word++ = *start++;
+			ft_just_again(&start, &str, &word);
 			ft_just_ff_twf_line(&word, &start);
 		}
 		str++;
