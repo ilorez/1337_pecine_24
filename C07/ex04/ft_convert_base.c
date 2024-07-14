@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 11:36:37 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/14 14:51:31 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/14 14:53:17 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char	*ft_convert_base(char *nbr, char *base_form, char *base_to)
 	{
 		return (NULL);
 	}
-	decnum = ft_atoi_base(nbr, base_form);
+	decnum = ft_atoi_base(nbr, base_from);
 	btl = ft_strlen(base_to);
 	if (decnum < 0)
 		m_s = 1 + ft_get_b_size(-decnum, btl);
