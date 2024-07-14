@@ -6,11 +6,11 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 09:28:03 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/14 11:21:53 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/14 11:51:30 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+//#include <stdio.h>
 #include <stdlib.h>
 
 int	ft_strlen(char *str)
@@ -42,11 +42,32 @@ char	*ft_calcule_c_size(char **strs, int size, int sl)
 	return (c_str);
 }
 
+int	ft_conca(char **strs, char *c_str, int size, char *sep)
+{
+	int	k;
+	int	j;
+	int	i;
+	int	sep_len;
+
+	sep_len = ft_strlen(sep);
+	i = 0;
+	j = 0;
+	while (i < size)
+	{
+		k = 0;
+		while (strs[i][k])
+			c_str[j++] = strs[i][k++];
+		k = 0;
+		if (++i < size)
+			while (k < sep_len)
+				c_str[j++] = sep[k++];
+	}
+	return (j);
+}
+
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
-	int		i;
 	int		j;
-	int		k;
 	int		sep_len;
 	char	*c_str;
 
@@ -60,25 +81,14 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	c_str = ft_calcule_c_size(strs, size, sep_len);
 	if (!c_str)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (i < size)
-	{
-		k = 0;
-		while (strs[i][k])
-			c_str[j++] = strs[i][k++];
-		k = 0;
-		if (++i < size)
-			while (k < sep_len)
-				c_str[j++] = sep[k++];
-	}
+	j = ft_conca(strs, c_str, size, sep);
 	c_str[j] = 0;
 	return (c_str);
 }
 
-int main(int argc, char **argv)
+/*int main(int argc, char **argv)
 {
 	(argc)--;
 	printf("s: %s\n", ft_strjoin( argc, ++argv, ", "));
 
-}
+}*/
