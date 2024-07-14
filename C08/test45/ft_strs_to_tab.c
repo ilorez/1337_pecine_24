@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:19:24 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/13 18:59:22 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/14 08:34:05 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_create_cpy(char *str, int len)
 	if (!m_dest)
 		return (NULL);
 	i = 0;
-	while (str[i])
+	while (i < len)
 	{
 		m_dest[i] = str[i];
 		i++;
@@ -57,18 +57,21 @@ struct	s_stock_str *ft_strs_to_tab(int ac, char **av)
 	i = 0;	
 	while (i < ac)
 	{
-		len = ft_strlen(av[i]);	
 		
-		printf("*************\nthe string: %s\nthe len: %d\nthe c_str: %s\n",av[i], len, "---" );
-		m_s_strs[i].str = av[i];
-		m_s_strs[i].size = 10;	
+		len = ft_strlen(av[i]);	
+		copied_s = ft_create_cpy(av[i], len);
+		if (!copied_s)
+			return (NULL);
+		printf("*************\nthe string: %s\nthe len: %d\nthe c_str: %s\n",copied_s, len, "---" );
+		m_s_strs[i].str = copied_s;
+		m_s_strs[i].size = len;	
 		copied_s = ft_create_cpy(av[i], len);
 		// print 
 		//
 		printf("-------------\nthe string: %s\nthe len: %d\nthe c_str: %s\n",m_s_strs[i].str, m_s_strs[i].size, copied_s );
 		if (!copied_s)
 			return (NULL);	
-		*(m_s_strs[i].copy) = *copied_s;
+		m_s_strs[i].copy = copied_s;
 		i++;
 	}
 	return (m_s_strs);
