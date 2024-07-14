@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 11:36:37 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/14 14:53:17 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/14 14:56:17 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	ft_putnb_base(char **result, int nbr, char *base, int m_s)
 	ft_rev_str(&(**result), m_s - 1);
 }
 
-char	*ft_convert_base(char *nbr, char *base_form, char *base_to)
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	int		decnum;
 	int		m_s;
