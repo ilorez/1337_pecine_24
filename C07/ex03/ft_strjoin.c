@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 09:28:03 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/14 11:51:30 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/14 18:46:39 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ char	*ft_calcule_c_size(char **strs, int size, int sl)
 		if (++i < size)
 			m_size += sl;
 	}
-	printf("malloc size is: %d\n", m_size + 1);
 	c_str = malloc(sizeof(char) * (m_size + 1));
 	return (c_str);
 }

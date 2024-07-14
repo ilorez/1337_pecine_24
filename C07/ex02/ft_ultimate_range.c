@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 08:55:46 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/14 10:44:43 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/14 18:46:05 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int	ft_ultimate_range(int **range, int min, int max)
 		return (-1);
 	}
 	len = max - min;
-	printf("not max min probleme\n");
-	printf("len is: %d\n", len);
 	(*range) = malloc((sizeof(int) * (len)));
 	if ((*range) == NULL)
 		return (-1);
