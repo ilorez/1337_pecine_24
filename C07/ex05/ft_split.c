@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 12:01:40 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/14 12:11:55 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/14 12:35:31 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,24 @@ int	ft_count_words(char *str, char *seps)
 	return (w);
 }
 
-void	ft_just_ff_twf_line(char **w, char **start)
-{
-	(**w) = 0;
-	(*start)++;
-}
-
 void	ft_just_again(char **start, char **str, char **word)
 {
 	while (*start != *str)
 		*(*word)++ = *(*start)++;
+	(**word) = 0;
+	(*start)++;
+}
+
+int	ft_make_it_possible(char *str, int *w, char **strings, char *charset)
+{
+	if (!(*str))
+	{
+		strings[0] = 0;
+		return (0);
+	}
+	*w = (ft_count_words(str, charset));
+	strings = malloc(sizeof(char *) * ((*w) + 1));
+	return (1);
 }
 
 char	**ft_split(char *str, char *charset)
@@ -63,14 +71,9 @@ char	**ft_split(char *str, char *charset)
 	char	*word;
 	int		w;
 
-	if (!(*str))
-	{
-		strings = malloc(1);
-		strings[0] = 0;
+	strings = malloc(1);
+	if (!ft_make_it_possible(str, &w, strings, charset))
 		return (strings);
-	}
-	w = (ft_count_words(str, charset));
-	strings = malloc(sizeof(char *) * (w + 1));
 	i = 0;
 	start = str;
 	while (i < w)
@@ -82,7 +85,6 @@ char	**ft_split(char *str, char *charset)
 			word = malloc(sizeof(char) * (str - start + 1));
 			strings[i++] = word;
 			ft_just_again(&start, &str, &word);
-			ft_just_ff_twf_line(&word, &start);
 		}
 		str++;
 	}
