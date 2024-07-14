@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 16:44:11 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/13 17:14:49 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/13 18:01:53 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	ft_putstr(char *par)
+void	ft_putstr(char *str)
 {
 	int	i;
 
@@ -48,14 +48,14 @@ void	ft_putnbr(int nb)
 
 void	ft_show_tab(struct s_stock_str *par)
 {
-	while ((*par)->str)
+	while (par->str != 0)
 	{
-		ft_putstr((*par)->str);
+		ft_putstr((par)->str);
 		ft_putchar('\n');
-		ft_putnbr((*par)->size);
+		ft_putnbr((par)->size);
 		ft_putchar('\n');
-		ft_putchar((*par)->copy);
+		ft_putstr((par)->copy);
 		ft_putchar('\n');
-		str++;
+		par++;
 	}
 }
