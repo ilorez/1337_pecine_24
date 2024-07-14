@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 11:36:37 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/14 12:57:55 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/14 14:51:31 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*ft_convert_base(char *nbr, char *base_form, char *base_to)
 	char	*result;
 	int		btl;
 
-	if (!ft_is_valid_base(base_to))
+	if (!ft_is_valid_base(base_to) || !ft_is_valid_base(base_from))
 	{
 		return (NULL);
 	}
