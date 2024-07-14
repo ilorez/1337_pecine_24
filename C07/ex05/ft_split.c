@@ -6,11 +6,11 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 12:01:40 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/13 10:34:18 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/14 12:09:35 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 int	ft_is_sep(char c, char *seps)
@@ -63,6 +63,12 @@ char	**ft_split(char *str, char *charset)
 	char	*word;
 	int		w;
 
+	if	(!(*str))
+	{
+		strings = malloc(1);
+		strings[0] = 0;
+		return (strings);
+	}
 	w = (ft_count_words(str, charset));
 	strings = malloc(sizeof(char *) * (w + 1));
 	i = 0;
@@ -80,11 +86,11 @@ char	**ft_split(char *str, char *charset)
 		}
 		str++;
 	}
-	strings[i] = NULL;
+	strings[i] = 0;
 	return (strings);
 }
 
-/*int    main(int argc, char **argv)
+int    main(int argc, char **argv)
 {
 	char **strs;
 	int    i;
@@ -97,4 +103,4 @@ char	**ft_split(char *str, char *charset)
 		i++;
 	}
 	return (0);
-}*/
+}
