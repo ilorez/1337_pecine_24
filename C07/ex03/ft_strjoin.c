@@ -6,11 +6,11 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 09:28:03 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/11 16:53:32 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/14 11:21:53 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 int	ft_strlen(char *str)
@@ -37,7 +37,8 @@ char	*ft_calcule_c_size(char **strs, int size, int sl)
 		if (++i < size)
 			m_size += sl;
 	}
-	c_str = (char *)malloc(sizeof(char) * (m_size + 1));
+	printf("malloc size is: %d\n", m_size + 1);
+	c_str = malloc(sizeof(char) * (m_size + 1));
 	return (c_str);
 }
 
@@ -50,7 +51,11 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	char	*c_str;
 
 	if (size <= 0)
-		return (0);
+	{
+		c_str = malloc(1);
+		c_str[0] = '\0';
+		return (c_str);
+	}
 	sep_len = ft_strlen(sep);
 	c_str = ft_calcule_c_size(strs, size, sep_len);
 	if (!c_str)
@@ -71,12 +76,9 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	return (c_str);
 }
 
-/*int main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	int i;
-	
-	i = argc ;
 	(argc)--;
 	printf("s: %s\n", ft_strjoin( argc, ++argv, ", "));
 
-}*/
+}
