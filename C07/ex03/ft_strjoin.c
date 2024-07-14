@@ -53,6 +53,8 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 		return (0);
 	sep_len = ft_strlen(sep);
 	c_str = ft_calcule_c_size(strs, size, sep_len);
+	if (!c_str)
+		return (NULL);
 	i = 0;
 	j = 0;
 	while (i < size)
