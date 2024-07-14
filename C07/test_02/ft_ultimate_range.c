@@ -6,26 +6,26 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 08:55:46 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/14 10:44:43 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/14 10:43:22 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 int	ft_ultimate_range(int **range, int min, int max)
 {
 	int	len;
-	int	j;
+	int j;
 
 	if (max <= min)
 	{
 		(*range) = NULL;
 		return (-1);
 	}
-	len = max - min;
+	len =  max - min;
 	printf("not max min probleme\n");
-	printf("len is: %d\n", len);
+	printf("len is: %d\n",len);
 	(*range) = malloc((sizeof(int) * (len)));
 	if ((*range) == NULL)
 		return (-1);
@@ -38,7 +38,7 @@ int	ft_ultimate_range(int **range, int min, int max)
 	return (len);
 }
 
-/*int main()
+int main()
 {
 	int	**range;
 	int *range1;
@@ -48,11 +48,11 @@ int	ft_ultimate_range(int **range, int min, int max)
 	int i = 0;
 
 	range = &range1;
-	len = ft_ultimate_range(range, min, max);
+	len = ft_ultimate_range(range, min, max); 
 	printf("Min: %d\nMax: %d\nSize of range: %d\n", min, max, len);
 	while (i < len)
 	{
 		printf("n %d:%d\n", i, range1[i]);
 		i++;
 	}
-}*/
+}
