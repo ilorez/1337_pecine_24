@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 11:36:37 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/16 13:27:05 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/16 17:59:40 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	char			*result;
 	int				btl;
 
-	if (!ft_is_valid_base(base_to) || !ft_is_valid_base(base_from))
+	if (!base_from || !base_to || !nbr
+		|| !ft_is_valid_base(base_to) || !ft_is_valid_base(base_from))
 		return (NULL);
 	anum = ft_atoi_base(nbr, base_from);
 	btl = ft_strlen(base_to);
