@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 12:01:40 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/14 12:35:31 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/16 12:07:25 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	**ft_split(char *str, char *charset)
 			start++;
 		else if ((str != start && (ft_is_sep(*str, charset) || !(*str))))
 		{
-			word = malloc(sizeof(char) * (str - start + 1));
+			word = (char *)malloc(sizeof(char) * (str - start + 1));
 			strings[i++] = word;
 			ft_just_again(&start, &str, &word);
 		}

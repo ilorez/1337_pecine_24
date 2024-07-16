@@ -6,11 +6,11 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 11:36:37 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/16 13:27:05 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/16 12:17:17 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 int		ft_atoi_base(char *str, char *base);
@@ -35,10 +35,10 @@ int	ft_strlen(char *str)
 
 void	ft_putnb_base(char **result, int nbr, char *base, int m_s)
 {
-	int				i;
-	int				bl;
-	int				m;
-	unsigned int	dnbr;
+	int	i;
+	int	bl;
+	int	m;
+	unsigned int dnbr;
 
 	i = 0;
 	m = 0;
@@ -50,6 +50,7 @@ void	ft_putnb_base(char **result, int nbr, char *base, int m_s)
 	}
 	else
 		dnbr = (unsigned int)(nbr);
+	
 	bl = ft_strlen(base);
 	while (i < m_s - m)
 	{
@@ -62,7 +63,7 @@ void	ft_putnb_base(char **result, int nbr, char *base, int m_s)
 int	get_malloc_size(int *anum, unsigned int *decnum, int btl)
 {
 	if (*anum < 0)
-	{
+	{	
 		*decnum = (unsigned int)((*anum) * -1);
 		return (2 + ft_get_b_size((*decnum), btl));
 	}
@@ -70,18 +71,32 @@ int	get_malloc_size(int *anum, unsigned int *decnum, int btl)
 	return (1 + ft_get_b_size((*decnum), btl));
 }
 
+
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int				anum;
-	unsigned int	decnum;
-	int				m_s;
-	char			*result;
-	int				btl;
+	int anum;
+	unsigned int		decnum;
+	int		m_s;
+	char	*result;
+	int		btl;
 
 	if (!ft_is_valid_base(base_to) || !ft_is_valid_base(base_from))
 		return (NULL);
 	anum = ft_atoi_base(nbr, base_from);
+	//
+	printf("atoi return: %d\n", anum);
+	//
 	btl = ft_strlen(base_to);
+	/*if (anum < 0)
+	{	
+		decnum = (unsigned int)(anum * -1);
+		m_s = 2 + ft_get_b_size(decnum, btl);
+	}
+	else
+	{
+		decnum = (unsigned int)(anum);
+		m_s = 1 + ft_get_b_size(decnum, btl);
+	}*/
 	m_s = get_malloc_size(&anum, &decnum, btl);
 	result = (char *)malloc(sizeof(char) * (m_s));
 	if (!result)
@@ -92,10 +107,11 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	else
 		ft_putnb_base(&result, anum, base_to, (m_s - 1));
 	return (result);
+
 }
 
-/*int	main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	printf("%s\n", ft_convert_base(argv[argc * 0 + 1], argv[2], argv[3]));
 	return (0);
-}*/
+}
