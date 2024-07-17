@@ -1,24 +1,19 @@
 
-RUNFLAGS = -Wall -Wextra -Werror -Iincludes
 TARGET=libft.a
-SRCS=${wildcard ./srcs/*.c}
-OBJS=${SRCS:./srcs/%.c=./srcs/%.c}
-CC=cc
+SRCS= srcs/ft_putchar.c srcs/ft_swap.c srcs/ft_putstr.c srcs/ft_strcmp.c srcs/ft_strlen.c 
+OBJS=${SRCS:.c=.o}
 
 all: ${TARGET}
-
 
 ${TARGET}: ${OBJS}
 	ar rcs $@ $^
 
-${OBJS}: ${SRCS}
-	${CC} ${RUNFLAGS} -c $^ -o $@
-
 clean:
-	rm -f *.o
+	rm -f ${OBJS}
 
 fclean: clean
 	rm -f ${TARGET}
+
 re: fclean all
 
 .PHONY: all clean fclean re
