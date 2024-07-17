@@ -6,11 +6,11 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 11:36:37 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/16 22:06:31 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/17 09:52:21 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+//#include <stdio.h>
 #include <stdlib.h>
 
 int		ft_atoi_base(char *str, char *base);
@@ -95,8 +95,8 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	return (result);
 }
 
-int	main(int argc, char **argv)
+/*int	main(int argc, char **argv)
 {
 	printf("%s\n", ft_convert_base(argv[argc * 0 + 1], argv[2], argv[3]));
 	return (0);
-}
+}*/

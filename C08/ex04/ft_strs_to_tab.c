@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:19:24 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/14 09:40:27 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/17 13:18:48 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 	{
 		len = ft_strlen(av[i]);
 		m_s_strs[i].size = len;
-		m_s_strs[i].str = ft_create_cpy(av[i], len);
+		m_s_strs[i].str = av[i];
 		m_s_strs[i].copy = ft_create_cpy(av[i], len);
 		i++;
 	}
