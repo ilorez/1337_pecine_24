@@ -6,8 +6,17 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 00:04:27 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/18 00:04:30 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/18 08:15:35 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+int	ft_any(char **tab, int(*f)(char*))
+{
+	int	i;
 
+	i = 0;
+	while (tab[i])
+		if (f(tab[i++]))
+			return (1);
+	return (0);
+}

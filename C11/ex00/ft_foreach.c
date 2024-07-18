@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 23:54:36 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/18 00:02:55 by znajdaou         ###   ########.fr       */
+/*   Updated: 2024/07/18 08:02:14 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_foreach(int *tab, int length, void(*f)(int))
 	i = 0;
 	while(i < length)
 	{
-		tab[i] = f(tab[i]);
+		f(tab[i]);
 		i++;
 	}
 
