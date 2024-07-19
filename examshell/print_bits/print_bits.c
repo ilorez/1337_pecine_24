@@ -1,51 +1,29 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   print_bits.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/12 09:23:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2024/07/12 10:29:24 by znajdaou         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <unistd.h>
+//#include <stdlib.h>
 
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-void	_print_bits(unsigned char octet, int i)
+
+void	_print_bits(int	num, int times)
 {
-	// int mod;
-	if ((i % 8 != 0) && octet == 0)
-	{
-		ft_putchar(48);
-		_print_bits(octet, ++i);
-		return ;
-	}
-	else if ( i % 8 == 0 && octet == 0 && i >= 7)
+	if (num == 0 && times == 8)
 	{
 		return ;
 	}
-	//	ft_putchar('-');
-	//	ft_putchar(octet);
-	//	ft_putchar('_');
-	// mod = octet % 2;
-	// octet = octet / 2;
-	_print_bits(octet / 2, ++i);
-	ft_putchar((octet % 2 + 48));
+	_print_bits(num / 2, ++times);
+	ft_putchar(num % 2 + 48);
 }
 
 void	print_bits(unsigned char octet)
 {
-	_print_bits(octet, 0);
+	_print_bits((int)octet, 0);
 }
 
-int	main(int argc, char **argv)
+/*int main(int ac, char **av)
 {
-	(void)argv;
-	print_bits(argc * 0);
-}
+	print_bits(atoi(av[ac *0 +1]));
+	return (0);
+}*/
