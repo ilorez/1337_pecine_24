@@ -1,6 +1,8 @@
 
+
+
 TARGET=libft.a
-SRCS= srcs/ft_putchar.c srcs/ft_swap.c srcs/ft_putstr.c srcs/ft_strcmp.c srcs/ft_strlen.c 
+SRCS= srcs/ft_putchar.c srcs/ft_swap.c srcs/ft_putstr.c srcs/ft_strcmp.c srcs/ft_strlen.c
 OBJS=${SRCS:.c=.o}
 
 all: ${TARGET}
